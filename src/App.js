@@ -7,8 +7,21 @@ class App extends Component {
     players: [],
     playerName: '',
     matchScore: [],
-    activePlayer: ''
+    activePlayer: '',
+    resetPoints: [111, 222, 333, 444, 555, 666, 777, 888, 999]
   }
+
+  componentWillMount (){
+    let players = JSON.parse(localStorage.getItem('players'));
+    let matchScore = JSON.parse(localStorage.getItem('matchScore'));
+    if(players){
+      this.setState({players})
+    }
+    if(players){
+      this.setState({matchScore})
+    }
+  }
+ 
 
   // NAME INPUT
   onNameInputChange = (e) => {
@@ -28,6 +41,12 @@ class App extends Component {
     const matchScore = [...this.state.matchScore];
     matchScore.push({playerName: newPlayer, matchScore: ''});
     this.setState({matchScore});
+
+
+    // ADD TO LOCAL STORAGE
+    localStorage.setItem('players', JSON.stringify(players));
+    localStorage.setItem('matchScore', JSON.stringify(matchScore));
+
   }
 
   // TOGGLE ACTIVE PLAYER IN THE STATE
@@ -35,7 +54,7 @@ class App extends Component {
     this.setState({activePlayer: e.target.name})
   }
 
-  // POINTS INPUT !!!!!  VEIKIA!!!!!
+  // POINTS INPUT
   onPointsInputChange = (e) => {
     const matchScore = [...this.state.matchScore];
     matchScore[e.target.name].matchScore = e.target.value;
@@ -48,7 +67,8 @@ class App extends Component {
     const players = [...this.state.players];
     const matchScore = [...this.state.matchScore];
     
-    if(!matchScore[i].matchScore) return;
+    // return (dont add points to the list) if nothing is entered into the input field or if the entered value is negative
+    if(!matchScore[i].matchScore || matchScore[i].matchScore < 0) return;
 
     players[i].playerMatchScores.push(parseFloat(matchScore[i].matchScore));
 
@@ -57,9 +77,38 @@ class App extends Component {
       return total += item;
     });
 
+    // CHECK IF THE TOTAL GAME SCORE IS EQUAL TO RESET
+    const resetPoints = [...this.state.resetPoints];
+    const playerGameScore = players[i].playerGameScore;
+    const resetMatch = resetPoints.includes(playerGameScore);
+    if(resetMatch){
+      // display players total score only if its equal
+      console.log(playerGameScore);
+      // reset the lucky player game score to 0
+      players[i].playerGameScore = 0;
+      players[i].playerMatchScores = [];
+    }
+
     this.setState({players});
+    // Update LS with players arr
+    localStorage.setItem('players', JSON.stringify(players));
     matchScore[i].matchScore = '';
     this.setState({matchScore});    
+  }
+
+  // DELETE PLAYER
+  deletePlayer = (i) => {
+    const players = [...this.state.players];
+    players.splice(i, 1);
+    this.setState({players});
+
+    // Match score array
+    const matchScore = [...this.state.matchScore];
+    matchScore.splice(i, 1);
+    this.setState({matchScore});
+    // Update LS with players arr
+    localStorage.setItem('players', JSON.stringify(players));
+    localStorage.setItem('matchScore', JSON.stringify(matchScore));
   }
 
   render() {
@@ -70,6 +119,7 @@ class App extends Component {
               onNameInputChange={this.onNameInputChange}
               addNewPlayer={this.addNewPlayer}/>
             <Game
+              deletePlayer={this.deletePlayer}
               submitHandler={this.submitHandler}
               matchScore={this.state.matchScore}
               onPointsInputChange={this.onPointsInputChange}

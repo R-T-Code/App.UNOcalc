@@ -6,7 +6,7 @@ const Game = (props) => {
 
     return (
         <div className='game'>
-            <h1>Game</h1>
+            <h1 className='gameHeading'>Game On!</h1>
             <div className='playersContainer'>
                 {players.map((player,i) => {
                     return (
@@ -20,7 +20,8 @@ const Game = (props) => {
                             onPointsInputChange={props.onPointsInputChange}
                             matchScore={props.matchScore}
                             submitHandler={props.submitHandler}
-                            activePlayer={props.activePlayer}/>
+                            activePlayer={props.activePlayer}
+                            deletePlayer={props.deletePlayer}/>
                     )
                 })}
             </div>

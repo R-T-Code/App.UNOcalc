@@ -1,6 +1,113 @@
+.game {
+    background-color: rgba(253, 253, 253, 0.3);
+    box-shadow: 0 0 10px 1px var(--color-2);
+    padding: 20px 40px;
+    border-radius: 20px;
+    width: 98%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+.gameHeading{
+    text-align: center;
+    flex: 1;
+    color: var(--color-1);
+    text-shadow: -2px 4px 10px var(--color-5);
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+// PLAYERS
 .playersContainer{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+
+    @media only screen and (max-width: 800px) {
+        justify-content: center;
+    }
+}
+
+.player{
+    margin: 10px;
+    background-color: var(--color-3);
+    box-shadow: 0 0 10px 1px var(--color-2);
+    border-radius: 20px;
+    padding: 0 5px;
+    color: var(--color-5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.playerNameWrapper{
+    display: flex;
+    font-size: 34px;
+    font-weight: 700;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.playerName{
+    text-shadow: 0 0 5px var(--color-1);
+    font-weight: 700;
+}
+.playerDelete{
+    align-self: flex-start;
+    padding: 10px 5px;
+    transition: .4s;
+}
+.playerDelete:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.playerTotal{
+    font-size: 40px;
+    font-weight:100;
+}
+.playerTotal span{
+    color: var(--color-1);
+    font-weight: 700;
+}
+.playerInput{
+    background-color: var(--color-4);
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-family: inherit;
+    font-size: 26px;
+    outline: none;
+    color: var(--color-1);
+    font-weight: 100;
+    transition: .4s;
+}
+.playerInput:focus{
+    border: 1px solid transparent;
+    box-shadow: 0 0 5px 1px currentColor;
+}
+.playerInput::placeholder{
+    color: currentColor;
     
+}
+.playerBtn{
+    background-color: transparent;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-family: inherit;
+    font-size: 26px;
+    outline: none;
+    color: currentColor;
+    margin-left: 5px;
+    font-weight: 700;
+}
+.playerLi{
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-1)
 }

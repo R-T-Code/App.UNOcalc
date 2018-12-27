@@ -1,21 +1,25 @@
 import React from 'react';
-import logo from '../../img/uno2.png';
 
 const LP = (props) => {
 
     return (
         <div>
-            <img src={logo} alt="UNO logo"/>
-            <h1>UNO calc</h1>
-            <p>Enter name</p>
-            <form onSubmit={props.addNewPlayer}>
-                <input 
-                    type='text'
-                    placeholder='enter name' 
-                    value={props.playerName} 
-                    onChange={props.onNameInputChange}/>
-                <button>Add new player</button>
-            </form>
+           <div className='logoWrapper'>
+                <h1 className='logoUno'>UNO</h1>
+                <h2 className='logoWord'>calc</h2>
+           </div>
+            <div className='formWrapper'>
+                <p className='formText'>Enter name</p>
+                <form className='lpForm' onSubmit={props.addNewPlayer}>
+                    <input
+                        className='formInput' 
+                        type='text'
+                        placeholder='enter name' 
+                        value={props.playerName} 
+                        onChange={props.onNameInputChange}/>
+                    <button className='formBtn'>Add new player</button>
+                </form>
+            </div>
         </div>
     ) 
 };

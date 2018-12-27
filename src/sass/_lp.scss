@@ -1,0 +1,108 @@
+// LOGO
+.logoWrapper {
+    background-color: rgba(253, 253, 253, 0.3);
+    box-shadow: 0 0 20px 1px var(--color-2);
+    border-radius: 0 0 60px 60px;
+    margin: auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: 600px) {
+        width: 98%;
+    }
+}
+.logoUno{
+    font-size: 200px;
+    color: var(--color-1);
+    text-shadow: -6px 4px 10px var(--color-5);
+    @media only screen and (max-width: 600px) {
+        font-size: 160px;
+    }
+}
+.logoWord{
+    font-size: 100px;
+    color: var(--color-5);
+    text-shadow: -6px 4px 10px var(--color-1);
+    align-self: flex-end;
+    @media only screen and (max-width: 600px) {
+        font-size: 80px;
+    }
+}
+
+// ENTER NAME FORM
+.formWrapper{
+    background-color: rgba(253, 253, 253, 0.3);
+    box-shadow: 0 0px 5px 0px var(--color-2);
+    padding: 10px;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 20px;
+    width: 50%;
+    display: grid;
+
+    @media only screen and (max-width: 800px) {
+        width: 60%;
+    }
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+    }
+}
+.formText{
+    text-align: center;
+    font-size: 50px;
+    color: var(--color-1);
+    @media only screen and (max-width: 800px) {
+        font-size: 40px;
+    }
+}
+.lpForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.formInput{
+    background-color: var(--color-3);
+    border: 1px solid var(--color-1);
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-family: inherit;
+    font-size: 34px;
+    outline: none;
+    color: var(--color-1);
+    transition: .4s;
+    @media only screen and (max-width: 800px) {
+        font-size: 28px;
+    }
+    @media only screen and (max-width: 460px) {
+        font-size: 20px;
+    }
+}
+.formInput:focus{
+    border: 1px solid transparent;
+    box-shadow: 0 0 10px 1px var(--color-2);
+}
+.formInput::placeholder{
+    color: var(--color-1);
+    
+}
+.formBtn{
+    background-color: transparent;
+    border: 1px solid var(--color-3);
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-family: inherit;
+    font-size: 24px;
+    outline: none;
+    color: var(--color-1);
+    @media only screen and (max-width: 800px) {
+        font-size: 20px;
+    }
+    @media only screen and (max-width: 460px) {
+        font-size: 16px;
+    }
+}
+.formBtn:active{
+    box-shadow: 0 0 10px 1px var(--color-2);
+}
