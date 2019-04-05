@@ -7,7 +7,12 @@ const Player = (props) => {
         const ul = <ul className="pointsList">
                     {props.matchScores.map((score,i) => {
                         return(
-                        <li className='playerLi' key={i}>{score}</li>
+                        <li className='playerLi' key={i}
+                        >{score}
+                        <span 
+                            onClick={() => props.deleteScore(i, props.index)}
+                            className='deleteScore' >X</span>
+                        </li>
                         )
                     })}
                 </ul>

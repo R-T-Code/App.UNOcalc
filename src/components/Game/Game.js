@@ -11,6 +11,7 @@ const Game = (props) => {
                 {players.map((player,i) => {
                     return (
                         <Player 
+                            deleteScore={props.deleteScore}
                             key={i} 
                             index={i} 
                             name={player.playerName} 

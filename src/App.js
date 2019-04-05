@@ -111,6 +111,26 @@ class App extends Component {
     localStorage.setItem('matchScore', JSON.stringify(matchScore));
   }
 
+  // DELETE SINGLE SCORE
+  deleteScore = (i, playerIndex) => {
+    const players = [...this.state.players].map((player, pI) => {
+      if(pI === playerIndex) {
+        const playerMatchScores = {...player}.playerMatchScores.filter((score, scoreIndex) => {
+            return scoreIndex !== i
+          });
+          const playerGameScore = playerMatchScores.reduce((total, item) => {
+            return total += item;
+          });
+
+        return {...player, playerMatchScores, playerGameScore};
+      } else {
+        return player
+      }
+    });
+    this.setState({players});
+    localStorage.setItem('players', JSON.stringify(players));
+  }
+
   render() {
     return (
         <div className='App'>
@@ -119,6 +139,7 @@ class App extends Component {
               onNameInputChange={this.onNameInputChange}
               addNewPlayer={this.addNewPlayer}/>
             <Game
+              deleteScore={this.deleteScore}
               deletePlayer={this.deletePlayer}
               submitHandler={this.submitHandler}
               matchScore={this.state.matchScore}
